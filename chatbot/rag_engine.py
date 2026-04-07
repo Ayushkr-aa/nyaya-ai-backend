@@ -28,7 +28,7 @@ load_dotenv(Path(__file__).resolve().parent.parent / ".env")
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 CHROMA_PERSIST_DIR = os.getenv("CHROMA_PERSIST_DIR", "./chroma_db")
 EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "models/text-embedding-004")
-LLM_MODEL = os.getenv("LLM_MODEL", "gemini-2.5-flash")
+LLM_MODEL = os.getenv("LLM_MODEL", "gemini-1.5-flash")
 USE_LOCAL_MODEL = os.getenv("USE_LOCAL_MODEL", "false").lower() == "true"
 
 genai.configure(api_key=GEMINI_API_KEY)
@@ -86,11 +86,15 @@ def _get_collection():
     global _chroma_client, _collection
     if _collection is None:
         from chromadb.utils import embedding_functions
-        local_ef = embedding_functions.SentenceTransformerEmbeddingFunction(model_name="all-MiniLM-L6-v2")
+        # Use Google Generative AI for embeddings to save RAM on Render
+        google_ef = embedding_functions.GoogleGenerativeAiEmbeddingFunction(
+            api_key=GEMINI_API_KEY,
+            model_name=EMBEDDING_MODEL
+        )
         
         persist_path = Path(__file__).resolve().parent.parent / CHROMA_PERSIST_DIR
         _chroma_client = chromadb.PersistentClient(path=str(persist_path))
-        _collection = _chroma_client.get_collection("indian_laws", embedding_function=local_ef)
+        _collection = _chroma_client.get_collection("indian_laws", embedding_function=google_ef)
     return _collection
 
 
