@@ -1,0 +1,12 @@
+﻿fastapi
+uvicorn[standard]
+pydantic
+pypdf
+python-multipart
+chromadb
+google-generativeai
+python-dotenv
+Pillow
+numpy
+scikit-learn
+sentence-transformers

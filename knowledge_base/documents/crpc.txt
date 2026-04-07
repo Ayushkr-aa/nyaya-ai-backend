@@ -1,0 +1,142 @@
+CODE OF CRIMINAL PROCEDURE, 1973 (CrPC)
+Act No. 2 of 1974
+Full Title: The Code of Criminal Procedure, 1973
+
+=== CHAPTER I — PRELIMINARY ===
+
+Section 1 — Short title, extent and commencement
+This Act may be called the Code of Criminal Procedure, 1973. It extends to the whole of India except the State of Jammu and Kashmir.
+
+Section 2 — Definitions
+(a) "bailable offence" means an offence which is shown as bailable in the First Schedule, or which is made bailable by any other law for the time being in force;
+(b) "charge" includes any head of charge when the charge contains more heads than one;
+(c) "cognizable offence" means an offence for which a police officer may arrest without warrant;
+(d) "complaint" means any allegation made orally or in writing to a Magistrate, with a view to his taking action, that some person has committed an offence;
+(n) "non-cognizable offence" means an offence for which a police officer has no authority to arrest without warrant;
+(wa) "victim" means a person who has suffered any loss or injury caused by reason of the act or omission for which the accused person has been charged.
+
+=== CHAPTER V — ARREST OF PERSONS ===
+
+Section 41 — When police may arrest without warrant
+Any police officer may without an order from a Magistrate and without a warrant, arrest any person:
+(a) who commits, in the presence of a police officer, a cognizable offence;
+(b) against whom a reasonable complaint has been made, or credible information has been received, or a reasonable suspicion exists, with a cognizable offence punishable with imprisonment for a term which may be up to seven years or more;
+(ba) against whom credible information has been received that he has committed a cognizable offence punishable with imprisonment for a term which may extend to seven years, the police officer shall not arrest but shall issue a notice of appearance under section 41A.
+
+Section 41A — Notice of appearance before police officer
+The police officer shall, in all cases where the arrest of a person is not required under the provisions of sub-section (1) of section 41, issue a notice directing the person to appear before him at a specified time and place.
+
+Section 41B — Procedure of arrest and duties of officer making arrest
+Every police officer while making an arrest shall:
+(a) bear an accurate, visible and clear identification of his name;
+(b) prepare a memorandum of arrest which shall be attested by at least one witness who is a member of the family of the person arrested or a respectable member of the locality;
+(c) inform the person arrested that he is entitled to have a relative or friend informed about his arrest.
+
+Section 41C — Control room at districts
+The State Government shall establish a police control room in every district and at State level. The names and addresses of persons arrested and the nature of offences shall be displayed on a notice board in the control room.
+
+Section 41D — Right of arrested person to meet an advocate
+When any person is arrested and interrogated by the police, he shall be entitled to meet an advocate of his choice during interrogation, though not throughout interrogation.
+
+Section 46 — How arrest is made
+The police officer or other person making the arrest shall actually touch or confine the body of the person to be arrested, unless there is a submission to the custody by word or action. If such person forcibly resists or attempts to evade the arrest, such officer or person may use all means necessary to effect the arrest. Nothing in this section gives a right to cause the death of a person who is not accused of an offence punishable with death or with imprisonment for life. No woman shall be arrested after sunset and before sunrise, and in exceptional circumstances, the woman police officer shall make the arrest by obtaining prior permission of the Judicial Magistrate.
+
+Section 49 — No unnecessary restraint
+The person arrested shall not be subjected to more restraint than is necessary to prevent his escape. Use of handcuffs is not to be used as a matter of routine.
+
+Section 50 — Person arrested to be informed of grounds of arrest and of right to bail
+Every police officer or other person arresting any person without warrant shall forthwith communicate to him full particulars of the offence for which he is arrested. Where a police officer arrests without warrant any person other than a person accused of a non-bailable offence, he shall inform the person arrested that he is entitled to be released on bail and that he may arrange for sureties on his behalf.
+
+Section 50A — Obligation of person making arrest to inform about the arrest, etc.
+Every police officer or other person making any arrest under this Code shall forthwith give the information regarding such arrest and place where the arrested person is being held to any of his friends, relatives or such other persons as may be disclosed or nominated by the arrested person.
+
+Section 55A — Health and safety of arrested person
+It shall be the duty of the person having the custody of an accused to take reasonable care of the health and safety of the accused.
+
+=== CHAPTER XII — INFORMATION TO THE POLICE AND THEIR POWERS TO INVESTIGATE ===
+
+Section 154 — Information in cognizable cases (FIR — First Information Report)
+(1) Every information relating to the commission of a cognizable offence, if given orally to an officer in charge of a police station, shall be reduced to writing by him or under his direction, and be read over to the informant; and every such information, whether given in writing or reduced to writing, shall be signed by the person giving it, and the substance thereof shall be entered in a book to be kept by such officer in such form as the State Government may prescribe in this behalf.
+(2) A copy of the information as recorded shall be given forthwith, free of cost, to the informant.
+(3) If the officer in charge of a police station refuses to record the information referred to, the informant may send the substance of such information, in writing and by post, to the Superintendent of Police concerned who, if satisfied, shall either investigate the case himself or direct an investigation.
+
+Important: The police CANNOT refuse to register an FIR for a cognizable offence. The Supreme Court in Lalita Kumari v. Government of U.P. (2014) held that registration of FIR is mandatory under Section 154 if the information discloses commission of a cognizable offence.
+
+Section 155 — Information as to non-cognizable cases
+(1) When information is given to an officer in charge of a police station of the commission of a non-cognizable offence, he shall enter the substance in a book and refer the informant to the Magistrate.
+(2) No police officer shall investigate a non-cognizable case without the order of a Magistrate having power to try such case.
+
+Section 156 — Police officer's power to investigate cognizable case
+(1) Any officer in charge of a police station may, without the order of a Magistrate, investigate any cognizable case which a Court having jurisdiction over the local area would have power to inquire into or try.
+(2) No proceeding of a police officer in any such case shall at any stage be called in question on the ground that the case was one which such officer was not empowered to investigate.
+(3) Any Magistrate empowered under section 190 may order such an investigation.
+
+Section 157 — Procedure for investigation
+If the officer in charge of a police station has reason to suspect the commission of a cognizable offence, he shall forthwith send a report of the same to a Magistrate empowered to take cognizance and shall proceed to investigate the facts and circumstances of the case.
+
+Section 161 — Examination of witnesses by police
+Any police officer making an investigation may examine orally any person supposed to be acquainted with the facts and circumstances of the case. Such person shall be bound to answer truly all questions, provided that no person shall be compelled to say anything which would have a tendency to expose him to a criminal charge, penalty or forfeiture.
+
+Section 164 — Recording of confessions and statements
+Any Magistrate may record any confession or statement made to him in the course of an investigation under this Chapter or at any time afterwards before the commencement of the inquiry or trial. No confession shall be recorded by a police officer.
+
+=== CHAPTER XXXIII — PROVISIONS AS TO BAIL AND BONDS ===
+
+Section 436 — In what cases bail to be taken
+When any person other than a person accused of a non-bailable offence is arrested or detained without warrant by an officer in charge of a police station, or appears or is brought before a Court, and is prepared at any time while in the custody of such officer or at any stage of the proceeding before such Court to give bail, such person shall be released on bail.
+
+If a person accused of a bailable offence is not released on bail within one week, the Court shall grant bail.
+
+Section 437 — When bail may be taken in case of non-bailable offence
+(1) When any person accused of, or suspected of the commission of any non-bailable offence is arrested or detained without warrant, he may be released on bail by a Court, but:
+(a) such person shall not be so released if there appear reasonable grounds for believing that he has been guilty of an offence punishable with death or imprisonment for life;
+(b) such person shall not be so released if such offence is a cognizable offence and he had been previously convicted of an offence punishable with death, imprisonment for life or imprisonment for seven years or more.
+
+(2) The Court may impose any condition which the Court considers necessary for granting bail.
+
+Section 437A — Bail to require accused to appear before next appellate Court
+Every Court granting bail to the accused shall order the accused to furnish a bail bond with sureties to appear before the higher Court.
+
+Section 438 — Direction for grant of bail to person apprehending arrest (Anticipatory Bail)
+(1) Where any person has reason to believe that he may be arrested on an accusation of having committed a non-bailable offence, he may apply to the High Court or the Court of Session for a direction under this section that in the event of such arrest, he shall be released on bail.
+(2) The High Court or the Court of Session may grant anticipatory bail after taking into account: the nature and gravity of the accusation; the antecedents of the applicant; the possibility of the applicant fleeing from justice; whether the accusation has been made with the object of injuring or humiliating the applicant.
+
+Section 439 — Special powers of High Court or Court of Session regarding bail
+(1) A High Court or Court of Session may direct that any person accused of an offence and in custody be released on bail, and may impose any condition which it considers necessary.
+(2) A High Court or Court of Session may direct that any person who has been released on bail be arrested and committed to custody.
+
+Section 440 — Amount of bond and reduction thereof
+The amount of every bond shall be fixed with due regard to the circumstances of the case and shall not be excessive. The Court may reduce the amount of bail.
+
+=== CHAPTER XXXVI — LIMITATION FOR TAKING COGNIZANCE OF CERTAIN OFFENCES ===
+
+Section 468 — Bar to taking cognizance after lapse of the period of limitation
+No Court shall take cognizance of an offence of the category specified below after the expiry of the period of limitation:
+(a) six months, if the offence is punishable with fine only;
+(b) one year, if the offence is punishable with imprisonment for a term not exceeding one year;
+(c) three years, if the offence is punishable with imprisonment for a term exceeding one year but not exceeding three years.
+
+=== RIGHTS OF AN ARRESTED PERSON ===
+
+Rights during arrest as per CrPC and Supreme Court guidelines:
+1. Right to know the grounds of arrest (Section 50)
+2. Right to be taken to a Magistrate within 24 hours (Article 22 of Constitution, Section 56 and 76 CrPC)
+3. Right to bail in bailable offences (Section 436)
+4. Right to apply for bail in non-bailable offences (Section 437)
+5. Right to apply for anticipatory bail (Section 438)
+6. Right to free legal aid if unable to afford a lawyer (Article 39A, Legal Services Authorities Act)
+7. Right to not be subjected to unnecessary restraint (Section 49)
+8. Right to medical examination (Section 54)
+9. Right to have a relative or friend informed of arrest (Section 50A)
+10. Right to meet an advocate during interrogation (Section 41D)
+11. Right to not be tortured or subjected to cruel treatment (D.K. Basu v. State of West Bengal, 1997)
+12. Right to remain silent — no person shall be compelled to be a witness against himself (Article 20(3) of Constitution)
+
+=== CHAPTER XXV — PROVISIONS AS TO ACCUSED PERSONS OF UNSOUND MIND ===
+
+Section 328 — Procedure when accused does not understand proceedings
+If an accused person is of unsound mind and consequently incapable of making his defence, the Magistrate or the Court shall postpone further proceedings and direct the release of the accused on bail.
+
+=== ZERO FIR ===
+
+A Zero FIR can be filed at any police station regardless of the jurisdiction where the offence was committed. The concept was introduced based on the recommendations of the Justice Verma Committee (2013). After registering the Zero FIR, the police station transfers it to the jurisdictional police station for investigation.

@@ -1,0 +1,245 @@
+DEPARTMENT OF JUSTICE — JUDICIAL SERVICES AND SCHEMES
+Government of India, Ministry of Law and Justice
+
+=== eCOURTS SERVICES ===
+
+The eCourts Mission Mode Project is a pan-India project for computerization of district and subordinate courts.
+
+How to check case status on eCourts:
+1. Visit https://ecourts.gov.in
+2. Click on "Case Status"
+3. Choose search method: by CNR number, party name, filing number, case number, FIR number, or advocate name
+4. CNR (Case Number Record) is a unique 16-digit number assigned to each case
+5. Enter required details and click Search
+6. View case details including: next hearing date, case history, orders, judgments
+
+eCourts Services Portal: https://services.ecourts.gov.in
+eCourts Mobile App: Available on Google Play Store and Apple App Store
+Services available on eCourts:
+- Case status tracking by CNR, party name, advocate name, filing number
+- Cause list viewing (daily list of cases to be heard)
+- Download of court orders and judgments
+- Online court fee payment
+- Case history and hearing schedule
+- District Court and High Court case tracking
+
+=== FAST TRACK COURTS (FTCs) ===
+
+Fast Track Courts were established to ensure speedy disposal of long-pending cases.
+Key Facts:
+- Over 800 Fast Track Courts operational across India
+- Prioritize cases pending for 5+ years
+- Handle heinous crimes and cases involving senior citizens
+- POCSO Fast Track Courts: 408 exclusive POCSO courts functioning nationally with target disposal within 1 year
+- Established under the 14th Finance Commission recommendations
+- Currently funded under the Centrally Sponsored Scheme
+Website: https://doj.gov.in/fast-track-courts
+
+POCSO Courts specifically handle cases under the Protection of Children from Sexual Offences Act, 2012 (POCSO Act). These courts:
+- Conduct child-friendly proceedings
+- Record testimony of child victims via video conferencing
+- Complete trial within one year
+- Provide victim compensation
+
+=== TELE LAW SERVICES ===
+
+Tele Law connects marginalized citizens with empanelled lawyers via video conferencing at Common Service Centres (CSCs).
+
+How Tele Law works:
+1. Visit your nearest CSC (Common Service Centre)
+2. Register for Tele Law service (free of cost)
+3. Get connected to a Panel Lawyer via video call
+4. Receive FREE pre-litigation legal advice on any legal matter
+5. If needed, connect with a lawyer for further assistance
+
+Eligible beneficiaries:
+- SC/ST communities
+- Women (especially domestic violence victims)
+- BPL (Below Poverty Line) cardholders
+- Persons with disabilities
+- Senior citizens
+- Minorities
+- Victims of trafficking and sexual offences
+
+Tele Law Portal: https://tele-law.in
+CSC Locator: https://locator.csc.gov.in
+Helpline: 1800-180-6270 (toll-free)
+
+As of 2026, Tele Law has provided legal advice to over 50 lakh citizens across India.
+
+=== NATIONAL JUDICIAL DATA GRID (NJDG) ===
+
+NJDG is a real-time database of cases filed and disposed across all courts in India.
+What you can find on NJDG:
+- Total pending cases (District and Taluka Courts)
+- Age-wise pendency (0-1 year, 1-3 years, 3-5 years, 5+ years)
+- State-wise, court-wise, and judge-wise statistics
+- Civil vs Criminal case breakdowns
+- Disposal rates and institution rates
+
+Key Statistics (approximate):
+- ~4.4 crore cases pending across all courts
+- Criminal cases: ~2.8 crore
+- Civil cases: ~1.6 crore
+- Cases pending for more than 5 years: significant proportion in several states
+
+Access NJDG: https://njdg.ecourts.gov.in
+Updated daily from integrated court servers across India.
+
+=== GRAM NYAYALAYAS (VILLAGE COURTS) ===
+
+Established under the Gram Nyayalayas Act, 2008 to bring justice to the doorstep of rural citizens.
+
+Features:
+- Mobile courts — can sit at any place within their jurisdiction
+- Handle both civil and criminal matters
+- Aim for disposal within 6 months
+- Use conciliation and plea bargaining
+- Simplified procedures — no lawyers required (self-representation allowed)
+- No court fees for certain categories
+
+Jurisdiction:
+- Civil disputes up to Rs. 1 lakh
+- Minor criminal offences (Schedule I and II of the Act)
+- Land disputes, family disputes, small claims
+
+Current Status: ~500+ Gram Nyayalayas notified across India
+Website: https://doj.gov.in/gram-nyayalayas
+
+=== LIVE STREAMING OF COURT PROCEEDINGS ===
+
+Several High Courts and the Supreme Court now live-stream proceedings for transparency.
+
+Supreme Court Live Stream:
+- YouTube: Supreme Court of India channel
+- Only Constitution Bench hearings and cases of public importance are streamed
+- Available during court working hours (10:30 AM - 4:30 PM)
+
+High Courts with live streaming:
+- Gujarat High Court
+- Karnataka High Court
+- Orissa High Court
+- Jharkhand High Court
+- Patna High Court
+- And several others
+
+Rules:
+- Only designated courtrooms are streamed
+- Audio/video recording by viewers is strictly prohibited
+- Subject to guidelines issued by the E-Committee of the Supreme Court
+- Part of the e-Courts Phase III project
+
+=== ONLINE FINE PAYMENT ===
+
+Steps to pay court fines online:
+1. Visit https://ecourts.gov.in/ecourts_home/
+2. Select "Payment of Court Fees"
+3. Enter your state and court details
+4. Enter case/order number
+5. View fine amount
+6. Pay via UPI / Net Banking / Debit Card / Credit Card
+
+Payment modes accepted:
+- UPI (PhonePe, Google Pay, Paytm)
+- Net Banking
+- Debit/Credit Card
+- NEFT/RTGS
+
+For traffic challans: https://echallan.parivahan.gov.in
+
+=== JUDICIAL VACANCIES ===
+
+Current Vacancy Scenario (approximate):
+Supreme Court: 34 sanctioned, ~32 working, ~2 vacant
+High Courts: 1114 sanctioned, ~680 working, ~430 vacant
+District Courts: 25,000+ sanctioned, ~19,000 working, ~6,000+ vacant
+
+Appointment process:
+- Supreme Court and High Court: Collegium system + Presidential appointment
+- District Courts: State Public Service Commission / High Court recruitment
+- The Collegium consists of the CJI and 4 senior-most judges of the Supreme Court
+
+Real-time vacancy data: https://njdg.ecourts.gov.in
+
+=== SUPREME COURT OF INDIA ===
+
+Basic Information:
+- Established: 28 January 1950
+- Location: Tilak Marg, New Delhi
+- Judges: 1 Chief Justice + up to 33 other Judges
+- Current CJI: As appointed by the President
+
+Jurisdiction:
+- Original: Disputes between States / Centre-State (Article 131)
+- Appellate: Appeals from High Courts (Articles 132, 133, 134)
+- Advisory: Presidential reference under Article 143
+- Writ: Under Article 32 for enforcement of Fundamental Rights
+- Special Leave Petition: Under Article 136
+
+Services:
+- Case filing: https://www.sci.gov.in
+- Cause list: https://www.sci.gov.in/causelist
+- Judgments: https://www.sci.gov.in/judgments
+- Helpline: 011-23388942 / 23388943
+
+=== HIGH COURTS OF INDIA ===
+
+India has 25 High Courts covering all States and Union Territories.
+
+Major High Courts:
+- Allahabad High Court (largest by number of judges) — Uttar Pradesh
+- Bombay High Court — Maharashtra, Goa, Dadra and Nagar Haveli, Daman and Diu
+- Delhi High Court — NCT of Delhi
+- Madras High Court — Tamil Nadu and Puducherry
+- Calcutta High Court — West Bengal and Andaman and Nicobar Islands
+- Karnataka High Court — Karnataka
+
+Common Services:
+- Case status check via respective HC websites
+- e-Filing available in most High Courts
+- Cause list published daily
+- Orders and judgments available online
+
+High Court Services: https://hcservices.ecourts.gov.in
+
+=== NALSA (NATIONAL LEGAL SERVICES AUTHORITY) ===
+
+NALSA was constituted under the Legal Services Authorities Act, 1987 to provide free legal aid and access to justice for the weaker sections of society.
+
+Who is eligible for free legal aid:
+- Members of SC/ST communities
+- Women and children
+- Persons with disabilities
+- Industrial workmen
+- Persons in custody
+- Victims of mass disaster, ethnic violence, caste atrocity, flood, drought, earthquake or industrial disaster
+- Persons whose annual income does not exceed Rs. 3 lakh (in Supreme Court Legal Aid) or as specified by the State
+
+NALSA services:
+- Free legal representation in courts
+- Legal literacy and awareness programs
+- Lok Adalats for alternative dispute resolution
+- Victim compensation schemes
+- Pre-litigation counselling
+
+NALSA Helpline: 15100
+Website: https://nalsa.gov.in
+
+=== DEPARTMENT OF JUSTICE (DoJ) ===
+
+The DoJ functions under the Ministry of Law and Justice and oversees:
+
+Key Divisions:
+- Infrastructure of Courts
+- Appointment of Judges (Collegium Secretariat)
+- Legal Aid and Tele Law
+- Fast Track Courts
+- eCourts Mission Mode Project
+- Gram Nyayalayas (Village Courts)
+- NALSA coordination
+- Judicial Academy and Training
+- Mediation and Conciliation
+
+Website: https://doj.gov.in
+Email: secy-just@nic.in
+Address: Jaisalmer House, 26 Mansingh Road, New Delhi - 110001

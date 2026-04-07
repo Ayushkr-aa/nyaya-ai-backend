@@ -1,0 +1,204 @@
+INDIAN PENAL CODE, 1860 (IPC)
+Act No. 45 of 1860
+Full Title: The Indian Penal Code
+
+=== CHAPTER I — INTRODUCTION ===
+
+Section 1 — Title and extent of operation of the Code
+This Act shall be called the Indian Penal Code, and shall extend to the whole of India.
+
+Section 2 — Punishment of offences committed within India
+Every person shall be liable to punishment under this Code and not otherwise for every act or omission contrary to the provisions thereof, of which he shall be guilty within India.
+
+Section 3 — Punishment of offences committed beyond, but which by law may be tried within, India
+Any person liable, by any Indian law, to be tried for an offence committed beyond India shall be dealt with according to the provisions of this Code.
+
+Section 4 — Extension of Code to extra-territorial offences
+The provisions of this Code apply also to any offence committed by any citizen of India in any place without and beyond India; any person on any ship or aircraft registered in India wherever it may be.
+
+Section 5 — Certain laws not to be affected by this Act
+Nothing in this Act shall affect the provisions of any Act for punishing mutiny and desertion of officers, soldiers, sailors or airmen in the service of the Government of India.
+
+=== CHAPTER II — GENERAL EXPLANATIONS ===
+
+Section 6 — Definitions in the Code to be understood subject to exceptions
+Throughout this Code every definition of an offence, every penal provision, and every illustration of every such definition or provision, shall be understood subject to the exceptions contained in the Chapter entitled "General Exceptions".
+
+Section 11 — "Person"
+The word "person" includes any Company or Association, or body of persons whether incorporated or not.
+
+Section 12 — "Public"
+The word "public" includes any class of the public or any community.
+
+Section 17 — "Government"
+The word "Government" denotes the Central Government or the Government of a State.
+
+Section 21 — "Public Servant"
+The words "public servant" denote a person falling under any of the following descriptions: every commissioned officer in the military, naval or air forces; every judge; every officer of a Court of Justice; every juryman, assessor, or member of a panchayat; every arbitrator; every officer whose duty it is to collect revenue, execute government orders, or prevent offences; every officer in a public utility service.
+
+=== CHAPTER V — OF ABETMENT ===
+
+Section 107 — Abetment of a thing
+A person abets the doing of a thing when: (1) He instigates any person to do that thing; (2) He engages with one or more persons in any conspiracy for the doing of that thing; (3) He intentionally aids, by any act or illegal omission, the doing of that thing.
+
+Section 108 — Abettor
+A person abets an offence, who abets either the commission of an offence, or the commission of an act which would be an offence if committed by a person capable by law of committing an offence with the same intention or knowledge as that of the abettor.
+
+Section 109 — Punishment of abetment if the act abetted is committed
+Whoever abets any offence shall, if the act abetted is committed in consequence of the abetment, and no express provision is made by this Code for the punishment of such abetment, be punished with the punishment provided for the offence.
+
+Section 120A — Definition of criminal conspiracy
+When two or more persons agree to do, or cause to be done, an illegal act, or an act which is not illegal by illegal means, such an agreement is designated a criminal conspiracy.
+
+Section 120B — Punishment of criminal conspiracy
+Whoever is a party to a criminal conspiracy to commit an offence punishable with death, imprisonment for life or rigorous imprisonment for two years or upwards, shall be punished in the same manner as if he had abetted such offence. In other cases, shall be punished with imprisonment up to six months, or fine, or both.
+
+=== CHAPTER XVI — OF OFFENCES AFFECTING THE HUMAN BODY ===
+
+Section 299 — Culpable homicide
+Whoever causes death by doing an act with the intention of causing death, or with the intention of causing such bodily injury as is likely to cause death, or with the knowledge that he is likely by such act to cause death, commits the offence of culpable homicide.
+
+Section 300 — Murder
+Culpable homicide is murder if the act by which death is caused is done with the intention of causing death; or if it is done with the intention of causing such bodily injury as the offender knows to be likely to cause the death; or if it is done with the intention of causing bodily injury to any person sufficient in the ordinary course of nature to cause death; or if the person committing the act knows that it is so imminently dangerous that it must in all probability cause death.
+
+Exception 1: Culpable homicide is not murder if the offender, whilst deprived of the power of self-control by grave and sudden provocation, causes the death of the person who gave the provocation.
+Exception 2: Culpable homicide is not murder if the offender in the exercise in good faith of the right of private defence exceeds the power given by law.
+Exception 3: Culpable homicide is not murder if the offender, being a public servant, exceeds the powers given to him by law and causes death.
+Exception 4: Culpable homicide is not murder if it is committed without premeditation in a sudden fight in the heat of passion.
+
+Section 302 — Punishment for murder
+Whoever commits murder shall be punished with death, or imprisonment for life, and shall also be liable to fine. This is a cognizable, non-bailable, and non-compoundable offence triable by the Court of Session.
+
+Section 304 — Punishment for culpable homicide not amounting to murder
+If the act is done with the intention of causing death or such bodily injury as is likely to cause death: imprisonment for life, or imprisonment up to 10 years, and fine.
+If the act is done with the knowledge that it is likely to cause death but without any intention to cause death: imprisonment up to 10 years, or fine, or both.
+
+Section 304A — Causing death by negligence
+Whoever causes the death of any person by doing any rash or negligent act not amounting to culpable homicide, shall be punished with imprisonment up to two years, or with fine, or with both.
+
+Section 304B — Dowry death
+Where the death of a woman is caused by any burns or bodily injury or occurs otherwise than under normal circumstances within seven years of her marriage and it is shown that soon before her death she was subjected to cruelty or harassment by her husband or any relative of her husband for, or in connection with, any demand for dowry, such death shall be called "dowry death", and such husband or relative shall be deemed to have caused her death.
+Punishment: imprisonment for not less than seven years but which may extend to imprisonment for life.
+
+Section 306 — Abetment of suicide
+If any person commits suicide, whoever abets the commission of such suicide, shall be punished with imprisonment up to ten years, and shall also be liable to fine.
+
+Section 307 — Attempt to murder
+Whoever does any act with such intention or knowledge and under such circumstances that, if he by that act caused death, he would be guilty of murder, shall be punished with imprisonment up to ten years, and shall also be liable to fine; and if hurt is caused to any person by such act, the offender shall be liable either to imprisonment for life, or to such punishment as is hereinbefore mentioned.
+
+Section 319 — Hurt
+Whoever causes bodily pain, disease or infirmity to any person is said to cause hurt.
+
+Section 320 — Grievous hurt
+The following kinds of hurt only are designated as "grievous": emasculation; permanent privation of the sight of either eye; permanent privation of the hearing of either ear; privation of any member or joint; destruction or permanent impairing of the powers of any member or joint; permanent disfiguration of the head or face; fracture or dislocation of a bone or tooth.
+
+Section 323 — Punishment for voluntarily causing hurt
+Whoever voluntarily causes hurt shall be punished with imprisonment up to one year, or fine up to one thousand rupees, or both.
+
+Section 325 — Punishment for voluntarily causing grievous hurt
+Whoever voluntarily causes grievous hurt shall be punished with imprisonment up to seven years, and shall also be liable to fine.
+
+Section 354 — Assault or criminal force to woman with intent to outrage her modesty
+Whoever assaults or uses criminal force to any woman, intending to outrage or knowing it to be likely that he will thereby outrage her modesty, shall be punished with imprisonment of not less than one year but which may extend to five years, and shall also be liable to fine.
+
+Section 354A — Sexual harassment and punishment for sexual harassment
+A man committing any of the following acts: physical contact and advances involving unwelcome and explicit sexual overtures; a demand or request for sexual favours; showing pornography against the will of a woman; making sexually coloured remarks, shall be guilty of the offence of sexual harassment.
+Punishment: rigorous imprisonment up to three years, or fine, or both (for acts 1-3); imprisonment up to one year, or fine, or both (for act 4).
+
+Section 354D — Stalking
+Any man who follows a woman and contacts or attempts to contact such woman to foster personal interaction repeatedly despite a clear indication of disinterest by such woman; or monitors the use by a woman of the internet, email or any other form of electronic communication, commits the offence of stalking.
+Punishment: imprisonment up to three years on first conviction; imprisonment up to five years on subsequent conviction.
+
+Section 363 — Punishment for kidnapping
+Whoever kidnaps any person from India or from lawful guardianship, shall be punished with imprisonment up to seven years, and shall also be liable to fine.
+
+Section 376 — Punishment for rape
+Whoever commits rape shall be punished with rigorous imprisonment of not less than ten years, but which may extend to imprisonment for life, and shall also be liable to fine.
+Section 376(2) — Aggravated rape (by police officer, public servant, armed forces, relative, etc.): rigorous imprisonment of not less than ten years, extending to imprisonment for life (which shall mean the remainder of that person's natural life), and fine.
+Section 376(3) — Rape of woman under sixteen years: imprisonment of not less than twenty years, extending to imprisonment for life (natural life), and fine.
+
+Section 377 — Unnatural offences
+Whoever voluntarily has carnal intercourse against the order of nature with any man, woman or animal, shall be punished with imprisonment for life, or imprisonment up to ten years, and fine. (Note: The Supreme Court in Navtej Singh Johar v. Union of India, 2018, decriminalized consensual sexual acts between adults, effectively reading down this section.)
+
+Section 378 — Theft
+Whoever, intending to take dishonestly any movable property out of the possession of any person without that person's consent, moves that property in order to such taking, is said to commit theft.
+
+Section 379 — Punishment for theft
+Whoever commits theft shall be punished with imprisonment up to three years, or fine, or both.
+
+Section 380 — Theft in dwelling house
+Whoever commits theft in any building, tent or vessel used as a human dwelling or for custody of property, shall be punished with imprisonment up to seven years, and fine.
+
+Section 383 — Extortion
+Whoever intentionally puts any person in fear of any injury to that person or any other, and thereby dishonestly induces the person so put in fear to deliver to any person any property or valuable security, commits "extortion".
+
+Section 384 — Punishment for extortion
+Whoever commits extortion shall be punished with imprisonment up to three years, or fine, or both.
+
+Section 390 — Robbery
+In all robbery there is either theft or extortion. When theft is robbery: Theft is "robbery" if, in order to the committing of the theft, or in committing the theft, or in carrying away or attempting to carry away property obtained by the theft, the offender voluntarily causes or attempts to cause to any person death, or hurt, or wrongful restraint, or fear of instant death, or instant hurt, or instant wrongful restraint.
+
+Section 392 — Punishment for robbery
+Whoever commits robbery shall be punished with rigorous imprisonment up to ten years, and shall also be liable to fine; and, if the robbery be committed on the highway between sunset and sunrise, the imprisonment may be extended to fourteen years.
+
+Section 395 — Punishment for dacoity
+Whoever commits dacoity shall be punished with imprisonment for life, or with rigorous imprisonment up to ten years, and shall also be liable to fine.
+
+Section 405 — Criminal breach of trust
+Whoever, being entrusted with property, or with any dominion over property, dishonestly misappropriates or converts to his own use that property, or dishonestly uses or disposes of that property in violation of any direction of law or any legal contract, commits "criminal breach of trust".
+
+Section 406 — Punishment for criminal breach of trust
+Whoever commits criminal breach of trust shall be punished with imprisonment up to three years, or fine, or both.
+
+Section 415 — Cheating
+Whoever, by deceiving any person, fraudulently or dishonestly induces the person so deceived to deliver any property to any person, or to consent that any person shall retain any property, is said to "cheat".
+
+Section 420 — Cheating and dishonestly inducing delivery of property
+Whoever cheats and thereby dishonestly induces the person deceived to deliver any property to any person, or to make, alter or destroy the whole or any part of a valuable security, shall be punished with imprisonment up to seven years, and shall also be liable to fine.
+
+Section 463 — Forgery
+Whoever makes any false document or false electronic record or part of a document or electronic record, with intent to cause damage or injury to the public or to any person, or to support any claim or title, or to cause any person to part with property, commits forgery.
+
+Section 468 — Forgery for purpose of cheating
+Whoever commits forgery, intending that the document or electronic record forged shall be used for the purpose of cheating, shall be punished with imprisonment up to seven years, and shall also be liable to fine.
+
+Section 494 — Marrying again during lifetime of husband or wife (Bigamy)
+Whoever, having a husband or wife living, marries in any case in which such marriage is void by reason of its taking place during the life of such husband or wife, shall be punished with imprisonment up to seven years, and shall also be liable to fine.
+
+Section 498A — Husband or relative of husband of a woman subjecting her to cruelty
+Whoever, being the husband or the relative of the husband of a woman, subjects such woman to cruelty shall be punished with imprisonment up to three years and shall also be liable to fine.
+Explanation: "Cruelty" means any wilful conduct which is of such a nature as is likely to drive the woman to commit suicide or to cause grave injury or danger to life, limb or health; or harassment of the woman with a view to coercing her or any person related to her to meet any unlawful demand for any property or valuable security.
+
+Section 499 — Defamation
+Whoever, by words either spoken or intended to be read, or by signs or by visible representations, makes or publishes any imputation concerning any person intending to harm, or knowing or having reason to believe that such imputation will harm, the reputation of such person, is said to defame that person.
+
+Section 500 — Punishment for defamation
+Whoever defames another shall be punished with simple imprisonment up to two years, or fine, or both.
+
+Section 503 — Criminal intimidation
+Whoever threatens another with any injury to his person, reputation or property, or to the person or reputation of any one in whom that person is interested, with intent to cause alarm to that person, or to cause that person to do any act which he is not legally bound to do, commits criminal intimidation.
+
+Section 506 — Punishment for criminal intimidation
+Whoever commits the offence of criminal intimidation shall be punished with imprisonment up to two years, or fine, or both. If threat be to cause death or grievous hurt: imprisonment up to seven years, or fine, or both.
+
+Section 509 — Word, gesture or act intended to insult the modesty of a woman
+Whoever, intending to insult the modesty of any woman, utters any words, makes any sound or gesture, or exhibits any object, intending that such word or sound shall be heard, or that such gesture or object shall be seen, by such woman, shall be punished with simple imprisonment up to three years, and also with fine.
+
+=== CHAPTER XVII — OF OFFENCES AGAINST PROPERTY ===
+
+Section 425 — Mischief
+Whoever with intent to cause, or knowing that he is likely to cause, wrongful loss or damage to the public or to any person, causes the destruction of any property, commits "mischief".
+
+Section 426 — Punishment for mischief
+Whoever commits mischief shall be punished with imprisonment up to three months, or fine, or both.
+
+Section 441 — Criminal trespass
+Whoever enters into or upon property in the possession of another with intent to commit an offence or to intimidate, insult or annoy any person in possession of such property, is said to commit "criminal trespass".
+
+Section 447 — Punishment for criminal trespass
+Whoever commits criminal trespass shall be punished with imprisonment up to three months, or fine up to five hundred rupees, or both.
+
+=== CHAPTER XXII — OF CRIMINAL INTIMIDATION, INSULT AND ANNOYANCE ===
+
+Section 504 — Intentional insult with intent to provoke breach of the peace
+Whoever intentionally insults, and thereby gives provocation to any person, intending or knowing it to be likely that such provocation will cause him to break the public peace, shall be punished with imprisonment up to two years, or fine, or both.
