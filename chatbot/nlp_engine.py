@@ -1,13 +1,29 @@
 import re
-from sklearn.feature_extraction.text import TfidfVectorizer
+from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
+import json
+import os
+import nltk
+from nltk.tokenize import sent_tokenize, word_tokenize
+from nltk.probability import FreqDist
+
+try:
+    nltk.data.find('tokenizers/punkt')
+    nltk.data.find('tokenizers/punkt_tab')
+except LookupError:
+    nltk.download('punkt')
+    nltk.download('punkt_tab')
 
 # ── Intent definitions ──────────────────────────────────────────────────────
 INTENTS = {
     "greeting": {
         "patterns": ["hello", "hi", "hey", "good morning", "good evening", "namaste", "greetings"],
         "response": "Namaste! 🙏 Welcome to the Department of Justice Help Portal. I can assist you with:\n• Case status & pendency\n• eCourts services\n• Fast Track Courts & POCSO Courts\n• Tele Law services\n• Online fine payment\n• Judicial vacancies\n• Live streaming of court cases\n\nHow may I help you today?"
+    },
+    "capability": {
+        "patterns": ["what can you do", "what do you know", "do you know all", "what are your capabilities", "help me", "kya kar sakte", "what laws do you know", "tell me about yourself", "तुम क्या कर सकते हो", "आप क्या जानते हो"],
+        "response": "Yes, I have extensive knowledge of Indian laws and the justice system! 🏛️\n\nI can help you with:\n- **Indian Penal Code (IPC)** — criminal offences, punishments, and definitions\n- **Code of Criminal Procedure (CrPC)** — arrest, bail, FIR, trial procedures\n- **Constitution of India** — Fundamental Rights, Directive Principles, key articles\n- **Court Services** — eCourts, case status, fine payments, live streaming\n- **Legal Aid** — Tele Law, Free Legal Aid, Gram Nyayalayas\n\nI understand natural questions in both **English and Hindi**. Just ask me anything — for example:\n- \"What are my rights if I'm arrested?\"\n- \"मुझे जमानत कैसे मिलेगी?\"\n- \"My landlord isn't returning my deposit, what can I do?\"\n\nWhat would you like to know? 😊"
     },
     "ecourts": {
         "patterns": ["ecourt", "e-court", "online court", "digital court", "case status online", "check case", "case number"],
@@ -53,13 +69,37 @@ INTENTS = {
         "patterns": ["gram nyayalaya", "village court", "rural court", "nyayalaya", "mobile court"],
         "response": "🏘️ **Gram Nyayalayas (Village Courts)**\n\nEstablished under the **Gram Nyayalayas Act, 2008** to bring justice to the doorstep of rural citizens.\n\n**Features:**\n• Mobile courts – can sit at any place within their jurisdiction\n• Handle both civil and criminal matters\n• Aim for disposal within 6 months\n• Use conciliation and plea bargaining\n\n**Jurisdiction:**\n• Civil disputes up to ₹1 lakh\n• Minor criminal offences (Schedule I & II)\n\n**Current Status:** ~500+ Gram Nyayalayas notified across India\n\nFor more info: https://doj.gov.in/gram-nyayalayas"
     },
+    "legal_rights": {
+        "patterns": ["what are my rights", "fundamental rights", "citizen rights", "human rights", "my legal rights"],
+        "response": "🛡️ **Your Legal Rights**\nUnder the Indian Constitution, you have Fundamental Rights including the Right to Equality, Freedom of Speech, Protection of Life and Personal Liberty, and Right against Exploitation."
+    },
+    "court_procedure": {
+        "patterns": ["how to file a case", "court procedure", "legal process", "steps to file case", "going to court", "file lawsuit"],
+        "response": "⚖️ **Court Procedure**\nTo file a case, you typically need to draft a petition or complaint, file it in the appropriate court with jurisdiction, pay court fees, and serve notice to the opposite party."
+    },
+    "case_status": {
+        "patterns": ["check case status", "where is my case", "case update", "court case status", "my court date"],
+        "response": "📱 **Case Status**\nYou can easily check your case status online at the eCourts portal (ecourts.gov.in) using your CNR number, case number, or party name."
+    },
+    "consumer_law": {
+        "patterns": ["consumer rights", "defective product", "consumer court", "file consumer complaint", "unfair trade", "e-daakhil"],
+        "response": "🛍️ **Consumer Law**\nIf you received a defective product or deficient service, you can file a complaint with the District Consumer Commission or online via the e-Daakhil portal."
+    },
+    "cyber_law": {
+        "patterns": ["cyber crime", "online fraud", "hacked", "internet scam", "report cybercrime", "financial fraud"],
+        "response": "💻 **Cyber Law**\nFor online fraud or cybercrimes, immediately report it on the National Cyber Crime portal (cybercrime.gov.in) or call the helpline at 1930."
+    },
+    "family_law": {
+        "patterns": ["divorce", "child custody", "alimony", "family court", "marriage law", "domestic violence", "maintenance"],
+        "response": "👨‍👩‍👧 **Family Law**\nFamily law matters like divorce, maintenance, and child custody are handled by Family Courts. Domestic violence can also be reported to the police or a protection officer."
+    },
     "fallback": {
         "patterns": [],
-        "response": "🤔 I'm sorry, I didn't quite understand that. I can help you with:\n\n• **eCourts** – case status, online services\n• **Fast Track / POCSO Courts** – speedy trial info\n• **Tele Law** – free legal aid\n• **Fine Payment** – pay court fines online\n• **Live Streaming** – watch court hearings\n• **NJDG** – case pendency statistics\n• **Judicial Vacancies** – judge appointment data\n• **Supreme Court / High Courts** – court information\n• **Gram Nyayalayas** – village courts\n• **DoJ Information** – about the department\n\nPlease try rephrasing your question or choose a topic above!"
+        "response": "🤔 I'm sorry, I didn't quite understand that. I can help you with:\n\n• **eCourts** – case status, online services\n• **Legal Rights** – fundamental rights, consumer law\n• **Family & Cyber Law** – divorce, online fraud\n• **Tele Law** – free legal aid\n• **Fine Payment** – pay court fines online\n\nPlease try rephrasing your question or choose a topic above!"
     }
 }
 
-# ── TF-IDF similarity model ──────────────────────────────────────────────────
+# ── Sentence Transformer similarity model ──────────────────────────────────────────────────
 def build_corpus():
     corpus, labels = [], []
     for intent, data in INTENTS.items():
@@ -71,8 +111,8 @@ def build_corpus():
     return corpus, labels
 
 CORPUS, LABELS = build_corpus()
-VECTORIZER = TfidfVectorizer(ngram_range=(1, 2))
-VECTORS = VECTORIZER.fit_transform(CORPUS)
+model = SentenceTransformer('all-MiniLM-L6-v2')
+PATTERN_VECS = model.encode(CORPUS)
 
 def classify_intent(text: str) -> str:
     text_clean = text.lower().strip()
@@ -83,17 +123,89 @@ def classify_intent(text: str) -> str:
         for pattern in data["patterns"]:
             if pattern in text_clean:
                 return intent
-    # TF-IDF cosine similarity fallback
+                
+    # Sentence Transformer cosine similarity fallback
     try:
-        query_vec = VECTORIZER.transform([text_clean])
-        scores = cosine_similarity(query_vec, VECTORS).flatten()
-        best_idx = np.argmax(scores)
-        if scores[best_idx] > 0.15:
+        query_vec = model.encode([text_clean])
+        # user snippet dynamically encodes corpus but precomputing avoids slow processing
+        scores = cosine_similarity(query_vec, PATTERN_VECS).flatten()
+        best_idx = scores.argmax()
+        if scores[best_idx] > 0.5:
             return LABELS[best_idx]
-    except Exception:
-        pass
+    except Exception as e:
+        print(f"Intent classification error: {e}")
     return "fallback"
 
 def get_response(user_message: str) -> str:
     intent = classify_intent(user_message)
     return INTENTS[intent]["response"]
+
+# ── Dynamic Q&A Dataset ──────────────────────────────────────────────────
+qa_data = []
+qa_questions = []
+qa_vecs = None
+
+def load_qa_dataset():
+    global qa_data, qa_questions, qa_vecs
+    try:
+        # Resolve path robustly
+        base_dir = os.path.dirname(os.path.dirname(__file__))
+        qa_path = os.path.join(base_dir, 'knowledge_base', 'qa_dataset.json')
+        if os.path.exists(qa_path):
+            with open(qa_path, 'r', encoding='utf-8') as f:
+                qa_data = json.load(f)
+            qa_questions = [item['question'] for item in qa_data]
+            if qa_questions:
+                qa_vecs = model.encode(qa_questions)
+    except Exception as e:
+        print(f"Error loading QA dataset: {e}")
+
+# Initialize Q&A Dataset
+load_qa_dataset()
+
+def match_qa_dataset(query: str, threshold: float = 0.85):
+    """Check if query is highly similar to any curated QA pair."""
+    if not qa_data or qa_vecs is None:
+        return None
+    try:
+        query_vec = model.encode([query.lower().strip()])
+        scores = cosine_similarity(query_vec, qa_vecs).flatten()
+        best_idx = scores.argmax()
+        if scores[best_idx] >= threshold:
+            return qa_data[best_idx]['answer']
+    except Exception as e:
+        print(f"QA match error: {e}")
+    return None
+
+# ── NLTK Summarization ──────────────────────────────────────────────────
+def summarize_text(text: str, max_sentences: int = 3) -> str:
+    """Summarize text to 2-3 lines using extractive NLTK summarization."""
+    if not text or len(text.strip()) < 100:
+        return text
+
+    try:
+        sentences = sent_tokenize(text)
+        if len(sentences) <= max_sentences:
+            return " ".join(sentences)
+
+        words = word_tokenize(text.lower())
+        stop_words = {'the', 'and', 'to', 'of', 'a', 'in', 'is', 'that', 'for', 'it', 'with', 'as', 'was', 'on', 'be', 'by', 'this', 'or'}
+        filtered_words = [word for word in words if word.isalnum() and word not in stop_words]
+        
+        freq_dist = FreqDist(filtered_words)
+        
+        sentence_scores = {}
+        for i, sentence in enumerate(sentences):
+            for word in word_tokenize(sentence.lower()):
+                if word in freq_dist:
+                    sentence_scores[i] = sentence_scores.get(i, 0) + freq_dist[word]
+                        
+        # Get top sentences by score, keep original order
+        top_indices = sorted(sorted(sentence_scores, key=sentence_scores.get, reverse=True)[:max_sentences])
+        summary = " ".join([sentences[i] for i in top_indices])
+        
+        return summary
+    except Exception as e:
+        print(f"NLTK Summarization error: {e}")
+        # Very basic fallback summarization if NLTK fails
+        return " ".join(text.split('.')[:max_sentences]) + "."

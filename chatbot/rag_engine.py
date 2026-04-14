@@ -10,6 +10,8 @@ import time
 from pathlib import Path
 
 import chromadb
+import warnings
+warnings.filterwarnings("ignore", category=FutureWarning, module="google.generativeai")
 import google.generativeai as genai
 from dotenv import load_dotenv
 
@@ -21,6 +23,7 @@ from chatbot.prompts import (
     SYSTEM_PROMPT_HINGLISH, RAG_PROMPT_TEMPLATE_HINGLISH, RAG_PROMPT_COMPACT_HINGLISH,
     CAPABILITY_RESPONSE, GREETING_RESPONSE, GREETING_RESPONSE_HINDI,
 )
+from chatbot.nlp_engine import classify_intent as semantic_classify, get_response as get_static_response, match_qa_dataset, summarize_text
 
 # Load env
 load_dotenv(Path(__file__).resolve().parent.parent / ".env")
@@ -28,13 +31,15 @@ load_dotenv(Path(__file__).resolve().parent.parent / ".env")
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 CHROMA_PERSIST_DIR = os.getenv("CHROMA_PERSIST_DIR", "./chroma_db")
 EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "models/text-embedding-004")
-LLM_MODEL = os.getenv("LLM_MODEL", "gemini-1.5-flash")
+LLM_MODEL = os.getenv("LLM_MODEL", "gemini-2.0-flash")
 USE_LOCAL_MODEL = os.getenv("USE_LOCAL_MODEL", "false").lower() == "true"
+USE_LLM = os.getenv("USE_LLM", "true").lower() == "true"
 
-genai.configure(api_key=GEMINI_API_KEY)
-
-# Initialize LLM (Gemini or Local)
-llm = genai.GenerativeModel(LLM_MODEL)
+if GEMINI_API_KEY:
+    genai.configure(api_key=GEMINI_API_KEY)
+    _genai_client = genai.GenerativeModel(LLM_MODEL)
+else:
+    _genai_client = None
 
 # Try to load local model if configured
 _local_llm_available = False
@@ -43,7 +48,7 @@ if USE_LOCAL_MODEL:
         from chatbot.local_llm import generate_local, is_local_model_available
         _local_llm_available = is_local_model_available()
         if _local_llm_available:
-            print("🤖 Local model mode ENABLED")
+            print("Local model mode ENABLED")
         else:
             print("⚠️ USE_LOCAL_MODEL=true but model file not found. Falling back to Gemini.")
     except ImportError:
@@ -66,16 +71,28 @@ def _call_llm_with_retry(prompt: str, max_retries: int = 3) -> str:
             print("Falling back to Gemini API...")
 
     # Gemini with retry
+    if not _genai_client:
+        return "I am currently running in **Offline Mode** (No LLM API Key configured). However, I found the following relevant legal text based on your query:"
+        
     for attempt in range(max_retries):
         try:
-            response = llm.generate_content(prompt)
+            response = _genai_client.generate_content(prompt)
+            # Guard against blocked / empty responses
+            if not response.parts:
+                finish = getattr(response.candidates[0], 'finish_reason', 'UNKNOWN') if response.candidates else 'UNKNOWN'
+                print(f"Gemini returned no parts. finish_reason={finish}")
+                return "I'm unable to answer this question due to content restrictions. Please rephrase or consult a legal expert."
             return response.text.strip()
         except Exception as e:
             error_str = str(e).lower()
             if "429" in error_str or "quota" in error_str or "resource" in error_str:
-                wait_time = (attempt + 1) * 10  # 10s, 20s, 30s
+                wait_time = (attempt + 1) * 5  # 5s, 10s, 15s
                 print(f"Rate limited (attempt {attempt+1}/{max_retries}), waiting {wait_time}s...")
                 time.sleep(wait_time)
+            elif "invalid argument" in error_str or "not found" in error_str:
+                # Model name issue — surface immediately, don't retry
+                print(f"\u274c Model error (check LLM_MODEL in .env): {e}")
+                raise
             else:
                 print(f"LLM error: {e}")
                 raise
@@ -86,71 +103,57 @@ def _get_collection():
     global _chroma_client, _collection
     if _collection is None:
         from chromadb.utils import embedding_functions
-        # Use Google Generative AI for embeddings to save RAM on Render
-        google_ef = embedding_functions.GoogleGenerativeAiEmbeddingFunction(
-            api_key=GEMINI_API_KEY,
-            model_name=EMBEDDING_MODEL
-        )
-        
+        # Fallback to local sentence transformers to prevent google SDK deprecation issues
+        ef = embedding_functions.SentenceTransformerEmbeddingFunction(model_name="all-MiniLM-L6-v2")
+            
         persist_path = Path(__file__).resolve().parent.parent / CHROMA_PERSIST_DIR
         _chroma_client = chromadb.PersistentClient(path=str(persist_path))
-        _collection = _chroma_client.get_collection("indian_laws", embedding_function=google_ef)
+        _collection = _chroma_client.get_collection("indian_laws", embedding_function=ef)
     return _collection
 
 
 
+# Common Hinglish transliteration markers (Latin-script Hinglish)
+_HINGLISH_MARKERS = re.compile(
+    r'\b(mujhe|mera|meri|kya|hain|hai|nahi|nahin|kaise|batao|bata|chahiye|'
+    r'aur|lekin|toh|kyunki|woh|yeh|iska|uska|karo|karein|milegi|milega|'
+    r'baare|ke|ka|ki|se|mein|par|pe|ye|vo|ab|jo|jab|tab|agar|phir|sab)\b',
+    re.IGNORECASE
+)
+
+
 def _detect_language(text: str) -> str:
-    """Detect if text is primarily Hindi or English."""
+    """Detect if text is primarily Hindi, Hinglish, or English."""
     hindi_chars = len(re.findall(r'[\u0900-\u097F]', text))
-    total_alpha = len(re.findall(r'[a-zA-Z\u0900-\u097F]', text))
+    english_chars = len(re.findall(r'[a-zA-Z]', text))
+    total_alpha = hindi_chars + english_chars
     if total_alpha == 0:
         return "en"
-    return "hi" if (hindi_chars / total_alpha) > 0.3 else "en"
+    hindi_ratio = hindi_chars / total_alpha
+    # Pure Hindi (Devanagari dominant)
+    if hindi_ratio > 0.7:
+        return "hi"
+    # Devanagari mixed with Latin → Hinglish
+    if hindi_ratio > 0.1:
+        return "hinglish"
+    # Check for Latin-script Hinglish (transliterated)
+    if _HINGLISH_MARKERS.search(text):
+        return "hinglish"
+    return "en"
 
 
 # ── Local intent classification (no LLM call needed) ────────────────────────
 
-GREETING_KEYWORDS = [
-    "hello", "hi", "hey", "namaste", "good morning", "good evening",
-    "good afternoon", "greetings", "namaskar", "howdy",
-    "नमस्ते", "नमस्कार", "हेलो",
-]
-
-CAPABILITY_KEYWORDS = [
-    "what can you do", "what do you know", "do you know all",
-    "what are your capabilities", "help me", "kya kar sakte",
-    "what laws do you know", "tell me about yourself",
-    "तुम क्या कर सकते हो", "आप क्या जानते हो",
-]
-
-SERVICE_KEYWORDS = [
-    "ecourt", "e-court", "case status", "check case", "fine payment",
-    "pay fine", "court fee", "live streaming", "njdg", "tele law",
-    "telelaw", "gram nyayalaya", "csc", "common service",
-]
-
-
 def _classify_intent_local(message: str, session_id: str) -> str:
-    """Classify intent using local keyword matching (saves API quota)."""
+    """Classify intent using semantic similarity and local context markers."""
     msg = message.lower().strip()
 
-    # Greetings (short messages that are just a greeting)
-    if len(msg.split()) <= 4:
-        for kw in GREETING_KEYWORDS:
-            if kw in msg:
-                return "greeting"
+    # 1. Semantic Check (Sentence Transformer)
+    intent = semantic_classify(msg)
+    if intent != "fallback":
+        return intent
 
-    # Capability questions
-    for kw in CAPABILITY_KEYWORDS:
-        if kw in msg:
-            return "capability"
-
-    # Court services
-    for kw in SERVICE_KEYWORDS:
-        if kw in msg:
-            return "court_service"
-
-    # Follow-up detection (short message with context)
+    # 2. Contextual Follow-up Detection
     history = memory.get_history(session_id)
     if history and len(msg.split()) <= 6:
         followup_cues = ["more", "also", "what about", "and", "tell me",
@@ -246,11 +249,34 @@ def _search_knowledge_base(query: str, top_k: int = 3) -> list[dict]:
 def _generate_response(message: str, sources: list[dict], session_id: str,
                        language: str = "en") -> tuple[str, list[str]]:
     """Generate LLM response using retrieved context."""
+    if not USE_LLM:
+        if not sources:
+            return "No relevant legal documents found in the database. Please try another query.", []
+        
+        fallback = "Here is the relevant legal information retrieved directly from the Kaggle database:\n\n"
+        for i, src in enumerate(sources, 1):
+            source_name = src.get('source', 'Unknown Source')
+            act = src.get('act', '')
+            section = src.get('section', '')
+            
+            # Apply NLP Summerization for offline text
+            summarized_text = summarize_text(src.get('text', ''), max_sentences=2)
+            
+            if act and section and act != "Unknown" and section != "General":
+                source_name = f"{act} - {section}"
+                
+            fallback += f"**{source_name}**:\n{summarized_text.strip()}\n\n"
+            
+        fallback += "*Note: I am running in Direct Database Mode to prevent AI rate limits. Responses are summarized.*"
+        return fallback.strip(), ["What are the penalties?", "Explain this in simple terms.", "How do I file a case?"]
+
     # Build context from sources
     context_parts = []
     for i, src in enumerate(sources, 1):
+        # Apply NLP summarization to the chunks before sending to LLM
+        summarized_chunk = summarize_text(src['text'], max_sentences=3)
         context_parts.append(
-            f"[Source {i}: {src['source']}]\n{src['text']}"
+            f"[Source {i}: {src['source']}]\n{summarized_chunk}"
         )
     context_str = "\n\n---\n\n".join(context_parts) if context_parts else "No relevant legal documents found."
 
@@ -303,13 +329,13 @@ def _generate_response(message: str, sources: list[dict], session_id: str,
         print(f"LLM generation error: {e}")
         # If rate limited, provide a helpful message with the source docs
         if sources:
-            fallback = "I'm currently experiencing high demand. Here's what I found in the legal documents:\n\n"
+            fallback = "I'm currently experiencing high demand due to API rate limits. Please try again after 3 minutes. In the meantime, here is the relevant legal information from the Kaggle dataset you provided:\n\n"
             for src in sources[:2]:
-                fallback += f"**{src['source']}**:\n{src['text'][:300]}\n\n"
-            fallback += "*Please try again in a minute for a more detailed answer.*"
+                fallback += f"**{src['source']}**:\n{src['text'][:400]}\n\n"
+            fallback += "*Note: This is automatically retrieved context. Please try again in 3 minutes for a complete AI-generated answer.*"
             return fallback, []
         return (
-            "I'm experiencing high demand right now. Please try again in about 30 seconds. "
+            "I'm experiencing high demand right now due to API rate limits. Please try again after 3 minutes. "
             "The free Gemini API has rate limits — your question will work shortly! 🙏",
             []
         )
@@ -327,46 +353,57 @@ def get_rag_response(message: str, session_id: str, language: str = "auto") -> d
     # Store user message in memory
     memory.add_user_message(session_id, message)
 
-    # Step 1: Classify intent locally (no API call)
+    # Step 1: Check Q&A Database Direct Match
+    qa_match = match_qa_dataset(message, threshold=0.85)
+    if qa_match:
+        memory.add_assistant_message(session_id, qa_match)
+        return {
+            "response": qa_match,
+            "sources": [],
+            "follow_ups": ["Tell me more", "What is the procedure?", "What are my rights?"],
+            "intent": "qa_direct_match",
+            "language": language
+        }
+
+    # Step 2: Classify intent locally (no API call)
     intent = _classify_intent_local(message, session_id)
 
-    # Step 2: Handle non-RAG intents
-    if intent == "greeting":
-        resp = GREETING_RESPONSE_HINDI if language == "hi" else GREETING_RESPONSE
-        memory.add_assistant_message(session_id, resp)
-        return {
-            "response": resp,
-            "sources": [],
-            "follow_ups": [
+    # Step 3: Handle non-RAG intents
+    # If the semantic classifier found a match with a predefined response, use it
+    if intent not in ["legal_query", "followup"]:
+        try:
+            resp = get_static_response(message)
+            memory.add_assistant_message(session_id, resp)
+            
+            # Map default follow-ups based on intent
+            follow_ups = [
                 "What is Section 302 of IPC?",
                 "What are my rights if arrested?",
                 "How to check case status on eCourts?"
-            ],
-            "intent": intent,
-            "language": language
-        }
+            ]
+            if intent == "capability":
+                follow_ups = ["Tell me about Section 498A", "What are Fundamental Rights?", "How does bail work in India?"]
+            elif intent in ["ecourts", "fine_payment"]:
+                 follow_ups = ["Check case status", "Pay traffic fine", "View NJDG stats"]
 
-    if intent == "capability":
-        memory.add_assistant_message(session_id, CAPABILITY_RESPONSE)
-        return {
-            "response": CAPABILITY_RESPONSE,
-            "sources": [],
-            "follow_ups": [
-                "Tell me about Section 498A",
-                "What are Fundamental Rights?",
-                "How does bail work in India?"
-            ],
-            "intent": intent,
-            "language": language
-        }
+            return {
+                "response": resp,
+                "sources": [],
+                "follow_ups": follow_ups,
+                "intent": intent,
+                "language": language
+            }
+        except KeyError:
+            # Fallback if the intent is recognized but no static response is mapped
+            pass
 
-    # Step 3: Rewrite query locally (no API call)
+    # Step 4: Rewrite query locally (no API call)
     search_query = _rewrite_query_local(message, session_id)
 
-    # Step 4: Search knowledge base (1 embedding API call)
+    # Step 5: Search knowledge base (1 embedding API call)
     sources = _search_knowledge_base(search_query)
 
-    # Step 5: Generate response with LLM (1 LLM API call with retry)
+    # Step 6: Generate response with LLM (1 LLM API call with retry)
     response_text, follow_ups = _generate_response(
         message, sources, session_id, language
     )

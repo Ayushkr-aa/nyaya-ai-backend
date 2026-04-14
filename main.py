@@ -17,11 +17,11 @@ def startup_event():
     from chatbot.rag_engine import USE_LOCAL_MODEL
     if USE_LOCAL_MODEL:
         try:
-            print("⏳ Pre-loading local AI model...")
+            print("Pre-loading local AI model...")
             get_local_llm()
-            print("🚀 Local AI ready!")
+            print("Local AI ready!")
         except Exception as e:
-            print(f"❌ Failed to pre-load local model: {e}")
+            print(f"Failed to pre-load local model: {e}")
 
 app.add_middleware(
     CORSMiddleware,
@@ -49,16 +49,24 @@ def root():
 
 @app.get("/api/health")
 def health():
-    return {"status": "ok", "rag": True, "llm": "gemini"}
+    from chatbot.rag_engine import LLM_MODEL
+    return {"status": "ok", "rag": True, "llm": LLM_MODEL}
 
 
 @app.post("/api/chat")
 def chat(req: ChatRequest):
+    # --- Input validation ---
+    if not req.message or not req.message.strip():
+        raise HTTPException(status_code=400, detail="Message cannot be empty.")
+    # Cap message length to avoid token overruns (Gemini 2.0-flash: 1M ctx but prompts get large)
+    MAX_MSG_LEN = 4000
+    message = req.message.strip()[:MAX_MSG_LEN]
+
     session_id = req.session_id or str(uuid.uuid4())
 
     # Get RAG response
     result = get_rag_response(
-        message=req.message,
+        message=message,
         session_id=session_id,
         language=req.language
     )

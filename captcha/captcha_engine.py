@@ -60,49 +60,52 @@ def _random_text(length: int = 6) -> str:
 
 def _draw_noise(draw: ImageDraw.ImageDraw, width: int, height: int):
     """Add random dots and lines as noise."""
-    for _ in range(80):
+    for _ in range(40):
         x = random.randint(0, width)
         y = random.randint(0, height)
-        r = random.randint(1, 3)
-        color = (random.randint(100, 200), random.randint(100, 200), random.randint(100, 200))
+        r = random.randint(1, 2)
+        color = (random.randint(180, 230), random.randint(180, 230), random.randint(180, 230))
         draw.ellipse([x - r, y - r, x + r, y + r], fill=color)
-    for _ in range(6):
+    for _ in range(4):
         x1, y1 = random.randint(0, width), random.randint(0, height)
         x2, y2 = random.randint(0, width), random.randint(0, height)
-        color = (random.randint(80, 180), random.randint(80, 180), random.randint(80, 180))
-        draw.line([x1, y1, x2, y2], fill=color, width=1)
+        color = (random.randint(150, 220), random.randint(150, 220), random.randint(150, 220))
+        draw.line([x1, y1, x2, y2], fill=color, width=2)
 
 def _generate_image(text: str) -> str:
-    width, height = 240, 80
-    bg_color = (245, 245, 255)
+    width, height = 300, 100
+    bg_color = (255, 255, 255)
     img = Image.new("RGB", (width, height), bg_color)
     draw = ImageDraw.Draw(img)
 
     _draw_noise(draw, width, height)
 
     # Draw each character with random rotation and offset
-    x_offset = 15
+    x_offset = 20
     for ch in text:
-        char_img = Image.new("RGBA", (35, 60), (0, 0, 0, 0))
+        char_img = Image.new("RGBA", (50, 70), (0, 0, 0, 0))
         char_draw = ImageDraw.Draw(char_img)
         try:
-            font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 36)
+            font = ImageFont.truetype("arial.ttf", 48)
         except Exception:
-            font = ImageFont.load_default()
+            try:
+                font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 48)
+            except Exception:
+                font = ImageFont.load_default()
         color = (
-            random.randint(20, 100),
-            random.randint(20, 100),
-            random.randint(20, 100),
+            random.randint(0, 50),
+            random.randint(0, 50),
+            random.randint(0, 50),
         )
-        char_draw.text((2, 5), ch, font=font, fill=color)
-        angle = random.randint(-25, 25)
+        char_draw.text((3, 0), ch, font=font, fill=color)
+        angle = random.randint(-15, 15)
         char_img = char_img.rotate(angle, expand=True)
-        y_pos = random.randint(5, 20)
+        y_pos = random.randint(10, 25)
         img.paste(char_img, (x_offset, y_pos), char_img)
-        x_offset += random.randint(30, 38)
+        x_offset += random.randint(40, 44)
 
-    # Slight blur for realism
-    img = img.filter(ImageFilter.GaussianBlur(radius=0.7))
+    # Very slight blur for realism without impacting readability
+    img = img.filter(ImageFilter.GaussianBlur(radius=0.2))
 
     # Encode to base64
     buffer = io.BytesIO()

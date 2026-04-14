@@ -1,4 +1,7 @@
-﻿fastapi
+kagglehub
+datasets
+pandas
+fastapi
 uvicorn[standard]
 pydantic
 pypdf
@@ -10,3 +13,8 @@ Pillow
 numpy
 scikit-learn
 sentence-transformers
+transformers
+torch
+accelerate
+nltk
+networkx
